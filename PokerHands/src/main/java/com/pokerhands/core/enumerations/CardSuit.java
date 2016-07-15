@@ -1,4 +1,4 @@
-package com.pokerhands.enumerations;
+package com.pokerhands.core.enumerations;
 
 import java.util.stream.Stream;
 
