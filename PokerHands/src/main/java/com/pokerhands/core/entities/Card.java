@@ -10,6 +10,11 @@ public class Card {
     public CardNumber number;
     public CardSuit suit;
 
+    public Card(char numberCharacter, char suitCharacter) {
+	number = CardNumber.fromCharacter(numberCharacter);
+	suit = CardSuit.fromCharacter(suitCharacter);
+    }
+
     @Override
     public int hashCode() {
 	return new HashCodeBuilder(17, 31).append(number).append(suit).toHashCode();
