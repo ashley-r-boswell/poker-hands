@@ -1,6 +1,5 @@
 package com.pokerhands.core.comparison;
 
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -28,9 +27,9 @@ public abstract class GroupTypeAnalyser implements HandTypeAnalyser {
 	return retval;
     }
 
-    private static Set<Card> takeGroup(Set<Card> allCards, int groupSize, Function<Card, ?> groupBy) {
-	List<Card> retval = allCards.stream().sorted(Collections.reverseOrder()).collect(Collectors.groupingBy(groupBy))
-		.values().stream().filter(g -> g.size() >= groupSize).findFirst().orElse(null);
+    protected static Set<Card> takeGroup(Set<Card> allCards, int groupSize, Function<Card, ?> groupBy) {
+	List<Card> retval = allCards.stream().collect(Collectors.groupingBy(groupBy)).values().stream()
+		.filter(g -> g.size() >= groupSize).findFirst().orElse(null);
 	if (retval != null) {
 	    allCards.removeAll(retval);
 	}
