@@ -11,6 +11,7 @@ import com.pokerhands.core.comparison.StandardFiveCardPokerModule;
 import com.pokerhands.core.exceptions.PokerException;
 
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -62,6 +63,8 @@ public class PokerHandsApplication extends Application {
 	resultLabel.setWrapText(true);
 
 	VBox root = new VBox();
+	root.setSpacing(10);
+	root.setPadding(new Insets(10));
 	root.getChildren().add(new Label("Player 1"));
 	root.getChildren().add(player1CardsText);
 	root.getChildren().add(new Label("Player 2"));
