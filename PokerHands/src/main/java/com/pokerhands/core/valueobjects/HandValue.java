@@ -33,12 +33,12 @@ public class HandValue implements Comparable<HandValue> {
 	    return valueComparison;
 	}
 
-	Card[] myCardsSorted = _remainingCards.toArray(new Card[5]);
-	Arrays.sort(myCardsSorted);
-	Card[] otherCardsSorted = otherHand._remainingCards.toArray(new Card[5]);
+	int[] myCardsSorted = _remainingCards.stream().mapToInt(c -> c.number.ordinal()).sorted().toArray();
+	int[] otherCardsSorted = otherHand._remainingCards.stream().mapToInt(c -> c.number.ordinal()).sorted()
+		.toArray();
 	Arrays.sort(otherCardsSorted);
 	for (int i = myCardsSorted.length - 1; i >= 0; i--) {
-	    int comparison = myCardsSorted[i].number.compareTo(otherCardsSorted[i].number);
+	    int comparison = myCardsSorted[i] - otherCardsSorted[i];
 	    if (comparison != 0) {
 		return comparison;
 	    }
