@@ -8,6 +8,7 @@ import com.google.inject.Key;
 import com.google.inject.TypeLiteral;
 import com.pokerhands.core.aggregates.PokerHand;
 import com.pokerhands.core.comparison.StandardFiveCardPokerModule;
+import com.pokerhands.core.exceptions.PokerException;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -38,14 +39,18 @@ public class PokerHandsApplication extends Application {
 	Button submitButton = new Button();
 	submitButton.setText("Compare");
 	submitButton.setOnAction((event) -> {
-	    int comparison = _comparator.compare(new PokerHand(player1CardsText.getText()),
-		    new PokerHand(player2CardsText.getText()));
-	    if (comparison > 0) {
-		resultLabel.setText("Player 1 wins!");
-	    } else if (comparison < 0) {
-		resultLabel.setText("Player 2 wins!");
-	    } else {
-		resultLabel.setText("Draw.");
+	    try {
+		int comparison = _comparator.compare(new PokerHand(player1CardsText.getText()),
+			new PokerHand(player2CardsText.getText()));
+		if (comparison > 0) {
+		    resultLabel.setText("Player 1 wins!");
+		} else if (comparison < 0) {
+		    resultLabel.setText("Player 2 wins!");
+		} else {
+		    resultLabel.setText("Draw.");
+		}
+	    } catch (PokerException pe) {
+		resultLabel.setText(pe.getMessage());
 	    }
 	});
 
@@ -54,6 +59,7 @@ public class PokerHandsApplication extends Application {
 	player2CardsText = new TextField();
 	player2CardsText.setText("3H4C5SKHKS");
 	resultLabel = new Label();
+	resultLabel.setWrapText(true);
 
 	VBox root = new VBox();
 	root.getChildren().add(new Label("Player 1"));
