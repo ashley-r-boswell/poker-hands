@@ -5,6 +5,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import com.pokerhands.core.enumerations.CardNumber;
 import com.pokerhands.core.enumerations.CardSuit;
+import com.pokerhands.core.exceptions.PolkerHandInitialisationException;
 
 public class Card {
     public CardNumber number;
@@ -12,7 +13,13 @@ public class Card {
 
     public Card(char numberCharacter, char suitCharacter) {
 	number = CardNumber.fromCharacter(numberCharacter);
+	if (number == null) {
+	    throw new PolkerHandInitialisationException("Unknown cardNumber: " + numberCharacter);
+	}
 	suit = CardSuit.fromCharacter(suitCharacter);
+	if (suit == null) {
+	    throw new PolkerHandInitialisationException("Unknown suit: " + suitCharacter);
+	}
     }
 
     @Override

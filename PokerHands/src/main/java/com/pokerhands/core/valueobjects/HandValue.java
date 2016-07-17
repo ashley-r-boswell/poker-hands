@@ -2,8 +2,8 @@ package com.pokerhands.core.valueobjects;
 
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.pokerhands.core.entities.Card;
 import com.pokerhands.core.enumerations.HandType;
@@ -11,10 +11,10 @@ import com.pokerhands.core.enumerations.HandType;
 public class HandValue implements Comparable<HandValue> {
     private HandType _type;
     private int _typeSpecificValue;
-    private SortedSet<Card> _remainingCards;
+    private Set<Card> _remainingCards;
 
     public HandValue(HandType type, int typeSpecificValue, Collection<Card> remainingCards) {
-	_remainingCards = new TreeSet<>(remainingCards);
+	_remainingCards = new HashSet<>(remainingCards);
 	_type = type;
 	_typeSpecificValue = typeSpecificValue;
     }

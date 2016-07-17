@@ -2,6 +2,7 @@ package com.pokerhands.core.comparison;
 
 import java.util.ArrayList;
 
+import com.google.inject.Inject;
 import com.pokerhands.core.aggregates.PokerHand;
 import com.pokerhands.core.entities.Card;
 import com.pokerhands.core.enumerations.HandType;
@@ -11,6 +12,7 @@ public class StraightFlushAnalyser implements HandTypeAnalyser {
 
     private final HandAnalyserService _handAnalyserService;
 
+    @Inject
     public StraightFlushAnalyser(HandAnalyserService handAnalyserService) {
 	_handAnalyserService = handAnalyserService;
     }

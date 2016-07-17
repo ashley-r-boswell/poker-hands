@@ -3,6 +3,7 @@ package com.pokerhands.core.comparison;
 import java.util.Comparator;
 import java.util.Set;
 
+import com.google.inject.Inject;
 import com.pokerhands.core.aggregates.PokerHand;
 import com.pokerhands.core.exceptions.PokerHandComparasonException;
 import com.pokerhands.core.valueobjects.HandValue;
@@ -10,6 +11,7 @@ import com.pokerhands.core.valueobjects.HandValue;
 public class PokerHandComparator implements Comparator<PokerHand> {
     private final Set<HandTypeAnalyser> _rules;
 
+    @Inject
     public PokerHandComparator(Set<HandTypeAnalyser> rules) {
 	_rules = rules;
     }

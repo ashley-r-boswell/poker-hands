@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 import com.pokerhands.core.entities.Card;
-import com.pokerhands.core.exceptions.PokerException;
+import com.pokerhands.core.exceptions.PolkerHandInitialisationException;
 
 public class PokerHand {
 
@@ -46,14 +46,6 @@ public class PokerHand {
 
     public Set<Card> getCards() {
 	return _cards;
-    }
-
-    public class PolkerHandInitialisationException extends PokerException {
-	public PolkerHandInitialisationException(String message) {
-	    super(message);
-	}
-
-	private static final long serialVersionUID = 1350885742157421509L;
     }
 
 }

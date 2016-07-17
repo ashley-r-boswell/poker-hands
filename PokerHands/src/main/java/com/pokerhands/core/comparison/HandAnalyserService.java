@@ -1,9 +1,5 @@
 package com.pokerhands.core.comparison;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import com.pokerhands.core.aggregates.PokerHand;
 import com.pokerhands.core.enumerations.CardSuit;
 
@@ -11,16 +7,15 @@ public class HandAnalyserService {
 
     public int valueAsAStraight(PokerHand hand) {
 	int retval = -1;
-	List<Integer> numberValues = hand.getCards().stream().map(c -> c.number.ordinal()).collect(Collectors.toList());
-	Collections.sort(numberValues);
+	int[] numberValues = hand.getCards().stream().mapToInt(c -> c.number.ordinal()).sorted().toArray();
 	boolean isAStraight = true;
-	for (int i = 0; i < numberValues.size() - 1; i++) {
-	    if ((numberValues.get(i) + 1) != numberValues.get(i + 1)) {
+	for (int i = 0; i < numberValues.length - 1; i++) {
+	    if ((numberValues[i] + 1) != numberValues[i + 1]) {
 		isAStraight = false;
 	    }
 	}
 	if (isAStraight) {
-	    retval = numberValues.get(numberValues.size() - 1);
+	    retval = numberValues[numberValues.length - 1];
 	}
 	return retval;
     }

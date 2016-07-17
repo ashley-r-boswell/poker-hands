@@ -28,12 +28,14 @@ public abstract class GroupTypeAnalyser implements HandTypeAnalyser {
     }
 
     protected static Set<Card> takeGroup(Set<Card> allCards, int groupSize, Function<Card, ?> groupBy) {
-	List<Card> retval = allCards.stream().collect(Collectors.groupingBy(groupBy)).values().stream()
+	Set<Card> retval = null;
+	List<Card> takenCards = allCards.stream().collect(Collectors.groupingBy(groupBy)).values().stream()
 		.filter(g -> g.size() >= groupSize).findFirst().orElse(null);
-	if (retval != null) {
-	    allCards.removeAll(retval);
+	if (takenCards != null) {
+	    allCards.removeAll(takenCards);
+	    retval = new HashSet<>(takenCards);
 	}
-	return new HashSet<>(retval);
+	return retval;
     }
 
 }

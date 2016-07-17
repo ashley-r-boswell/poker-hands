@@ -1,5 +1,6 @@
 package com.pokerhands.core.comparison;
 
+import com.google.inject.Inject;
 import com.pokerhands.core.aggregates.PokerHand;
 import com.pokerhands.core.enumerations.HandType;
 import com.pokerhands.core.valueobjects.HandValue;
@@ -8,6 +9,7 @@ public class FlushAnalyser implements HandTypeAnalyser {
 
     private final HandAnalyserService _handAnalyserService;
 
+    @Inject
     public FlushAnalyser(HandAnalyserService handAnalyserService) {
 	_handAnalyserService = handAnalyserService;
     }
