@@ -10,12 +10,8 @@ import com.pokerhands.core.valueobjects.HandValue;
 
 public class StraightAnalyser implements HandTypeAnalyser {
 
-    private final HandAnalyserService _handAnalyserService;
-
     @Inject
-    public StraightAnalyser(HandAnalyserService handAnalyserService) {
-	_handAnalyserService = handAnalyserService;
-    }
+    private HandAnalyserService _handAnalyserService;
 
     @Override
     public HandValue calculateHandValue(PokerHand hand) {

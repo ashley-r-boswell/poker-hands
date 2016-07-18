@@ -9,12 +9,9 @@ import com.pokerhands.core.exceptions.PokerHandComparasonException;
 import com.pokerhands.core.valueobjects.HandValue;
 
 public class PokerHandComparator implements Comparator<PokerHand> {
-    private final Set<HandTypeAnalyser> _rules;
 
     @Inject
-    public PokerHandComparator(Set<HandTypeAnalyser> rules) {
-	_rules = rules;
-    }
+    private Set<HandTypeAnalyser> _rules;
 
     @Override
     public int compare(PokerHand hand1, PokerHand hand2) {
