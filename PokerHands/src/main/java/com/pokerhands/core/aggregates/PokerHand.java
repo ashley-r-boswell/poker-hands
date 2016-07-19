@@ -40,7 +40,6 @@ public class PokerHand {
 	    if (!_cards.add(card)) {
 		throw new PolkerHandInitialisationException(
 			"Cannot have more than 1 card of the same number and suit.");
-		// TODO Also check for card duplication during hand comparison.
 	    }
 	}
     }

@@ -1,6 +1,5 @@
 package com.pokerhands.core.comparison;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -22,8 +21,7 @@ public class FullHouseAnalyser implements HandTypeAnalyser {
 	Set<Card> theThree = _handAnalyserService.takeGroup(cards, 3, c -> c.number);
 	Set<Card> theTwo = _handAnalyserService.takeGroup(cards, 2, c -> c.number);
 	if ((theThree != null) && (theTwo != null)) {
-	    retval = new HandValue(HandType.FULL_HOUSE, theThree.iterator().next().number.ordinal(),
-		    new ArrayList<Card>());
+	    retval = new HandValue(HandType.FULL_HOUSE, theThree.iterator().next().number.ordinal());
 	}
 	return retval;
     }

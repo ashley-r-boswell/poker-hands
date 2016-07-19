@@ -13,10 +13,17 @@ public class HandValue implements Comparable<HandValue> {
     private int _typeSpecificValue;
     private Set<Card> _remainingCards;
 
+    public HandValue(HandType type, int typeSpecificValue) {
+	this(type, typeSpecificValue, null);
+    }
+
     public HandValue(HandType type, int typeSpecificValue, Collection<Card> remainingCards) {
-	_remainingCards = new HashSet<>(remainingCards);
+	_remainingCards = new HashSet<>();
 	_type = type;
 	_typeSpecificValue = typeSpecificValue;
+	if (remainingCards != null) {
+	    _remainingCards.addAll(remainingCards);
+	}
     }
 
     @Override
