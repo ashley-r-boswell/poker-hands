@@ -23,6 +23,7 @@ public class PokerHand {
 	    throw new PolkerHandInitialisationException(
 		    "Cards must be described in a pair of characters. The first character of the card is the number and the second is the suit");
 	}
+	cardDescription = cardDescription.toUpperCase();
 	List<Card> cards = new ArrayList<>();
 	for (int i = 0; (i + 1) < cardDescription.length(); i = i + 2) {
 	    cards.add(new Card(cardDescription.charAt(i), cardDescription.charAt(i + 1)));
