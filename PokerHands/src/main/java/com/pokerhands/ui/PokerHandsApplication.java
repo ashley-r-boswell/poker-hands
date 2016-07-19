@@ -65,13 +65,19 @@ public class PokerHandsApplication extends Application {
 	VBox root = new VBox();
 	root.setSpacing(10);
 	root.setPadding(new Insets(10));
+	Label instructions = new Label(
+		"Specify two, five-cards hands of cards by listing the cards as a pair of characters - number then suit");
+	instructions.setWrapText(true);
+	root.getChildren().add(instructions);
+	root.getChildren().add(new Label("Numbers: 2, 3, 4, 5, 6, 7, 8, 9, T, J, Q, K and A"));
+	root.getChildren().add(new Label("Suits: C, D, H, and S"));
 	root.getChildren().add(new Label("Player 1"));
 	root.getChildren().add(player1CardsText);
 	root.getChildren().add(new Label("Player 2"));
 	root.getChildren().add(player2CardsText);
 	root.getChildren().add(submitButton);
 	root.getChildren().add(resultLabel);
-	primaryStage.setScene(new Scene(root, 300, 250));
+	primaryStage.setScene(new Scene(root, 300, 350));
 	primaryStage.show();
     }
 

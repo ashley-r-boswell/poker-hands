@@ -11,7 +11,7 @@ import com.pokerhands.core.exceptions.PolkerHandInitialisationException;
 
 public class PokerHand {
 
-    private static final int MAX_NUMBER_OF_CARDS = 5;
+    private static final int NUMBER_OF_CARDS = 5;
     private Set<Card> _cards;
 
     public PokerHand(Card... cards) {
@@ -32,8 +32,8 @@ public class PokerHand {
     }
 
     private void initialise(List<Card> cards) {
-	if (cards.size() > MAX_NUMBER_OF_CARDS) {
-	    throw new PolkerHandInitialisationException("There cannot be more than " + MAX_NUMBER_OF_CARDS + " cards");
+	if (cards.size() != NUMBER_OF_CARDS) {
+	    throw new PolkerHandInitialisationException("A hand must contain " + NUMBER_OF_CARDS + " cards");
 	}
 	_cards = new HashSet<>();
 	for (Card card : cards) {
