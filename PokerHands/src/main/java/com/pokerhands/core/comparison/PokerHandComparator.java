@@ -6,7 +6,7 @@ import com.pokerhands.core.exceptions.PokerHandComparasonException;
 import com.pokerhands.core.valueobjects.HandValue;
 
 import java.util.Comparator;
-import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 
 public class PokerHandComparator implements Comparator<PokerHand> {
@@ -25,7 +25,8 @@ public class PokerHandComparator implements Comparator<PokerHand> {
     private HandValue getBestScoreForHand(PokerHand hand) {
         return rules.stream()
                     .map(r -> r.calculateHandValue(hand))
-                    .filter(Objects::nonNull)
+                    .filter(Optional::isPresent)
+                    .map(Optional::get)
                     .min(Comparator.reverseOrder())
                     .orElseThrow(() -> new PokerHandComparasonException("Could not calculate a score for a hand"));
     }

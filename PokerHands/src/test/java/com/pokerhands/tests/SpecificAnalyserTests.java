@@ -8,6 +8,8 @@ import com.pokerhands.core.valueobjects.HandValue;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Optional;
+
 import static org.junit.Assert.*;
 
 public class SpecificAnalyserTests {
@@ -22,11 +24,11 @@ public class SpecificAnalyserTests {
     private void testAnalyser(Class<? extends HandTypeAnalyser> classToTest, String ownHand, String otherHand,
                               Outcome expectedOutcome) {
         HandTypeAnalyser testSubject = injector.getInstance(classToTest);
-        HandValue ownHandValue = testSubject.calculateHandValue(new PokerHand(ownHand));
-        assertNotNull("Own hand was not detected as the expected type", ownHandValue);
-        HandValue otherHandValue = testSubject.calculateHandValue(new PokerHand(otherHand));
-        assertNotNull("Other hand was not detected as the expected type", otherHandValue);
-        int comparisonResult = ownHandValue.compareTo(otherHandValue);
+        Optional<HandValue> ownHandValue = testSubject.calculateHandValue(new PokerHand(ownHand));
+        assertTrue("Own hand was not detected as the expected type", ownHandValue.isPresent());
+        Optional<HandValue> otherHandValue = testSubject.calculateHandValue(new PokerHand(otherHand));
+        assertTrue("Other hand was not detected as the expected type", otherHandValue.isPresent());
+        int comparisonResult = ownHandValue.get().compareTo(otherHandValue.get());
         switch (expectedOutcome) {
             case DRAW:
                 assertEquals(ownHand + " should draw with " + otherHand, 0, comparisonResult);

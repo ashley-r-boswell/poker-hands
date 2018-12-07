@@ -6,10 +6,7 @@ import com.pokerhands.core.entities.Card;
 import com.pokerhands.core.enumerations.HandType;
 import com.pokerhands.core.valueobjects.HandValue;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class TwoPairAnalyser implements HandTypeAnalyser {
 
@@ -17,7 +14,7 @@ public class TwoPairAnalyser implements HandTypeAnalyser {
     private HandAnalyserService handAnalyserService;
 
     @Override
-    public HandValue calculateHandValue(PokerHand hand) {
+    public Optional<HandValue> calculateHandValue(PokerHand hand) {
         Set<Card> cards = new HashSet<>(hand.getCards());
         Set<Card> pair1 = handAnalyserService.takeGroup(cards, 2, Card::getNumber);
         Set<Card> pair2 = handAnalyserService.takeGroup(cards, 2, Card::getNumber);
@@ -27,9 +24,9 @@ public class TwoPairAnalyser implements HandTypeAnalyser {
             numbers.add(pair2.iterator().next().getNumber().ordinal());
             int value = numbers.stream().max(Integer::compare).orElse(0) * 100;
             value += numbers.stream().min(Integer::compare).orElse(0);
-            return new HandValue(HandType.TWO_PAIRS, value, cards);
+            return Optional.of(new HandValue(HandType.TWO_PAIRS, value, cards));
         }
-        return null;
+        return Optional.empty();
     }
 
 }

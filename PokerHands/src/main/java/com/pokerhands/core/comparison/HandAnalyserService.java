@@ -8,6 +8,7 @@ import com.pokerhands.core.valueobjects.HandValue;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -38,13 +39,10 @@ public class HandAnalyserService {
         return hand.getCards().stream().allMatch(c -> c.getSuit() == suit);
     }
 
-    public HandValue calculateHandValue(PokerHand hand, HandType type, int groupSize, Function<Card, ?> groupBy) {
+    public Optional<HandValue> calculateHandValue(PokerHand hand, HandType type, int groupSize, Function<Card, ?> groupBy) {
         Set<Card> cards = new HashSet<>(hand.getCards());
-        Set<Card> group = takeGroup(cards, groupSize, groupBy);
-        if (group != null) {
-            return new HandValue(type, group.iterator().next().getNumber().ordinal(), cards);
-        }
-        return null;
+        return Optional.ofNullable(takeGroup(cards, groupSize, groupBy))
+                       .map(group -> new HandValue(type, group.iterator().next().getNumber().ordinal(), cards));
     }
 
     public Set<Card> takeGroup(Set<Card> allCards, int groupSize, Function<Card, ?> groupBy) {

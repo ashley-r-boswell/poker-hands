@@ -5,14 +5,17 @@ import com.pokerhands.core.aggregates.PokerHand;
 import com.pokerhands.core.enumerations.HandType;
 import com.pokerhands.core.valueobjects.HandValue;
 
+import java.util.Optional;
+
 public class FlushAnalyser implements HandTypeAnalyser {
 
     @Inject
     private HandAnalyserService handAnalyserService;
 
     @Override
-    public HandValue calculateHandValue(PokerHand hand) {
-        return handAnalyserService.isAFlush(hand) ? new HandValue(HandType.FLUSH, 0, hand.getCards()) : null;
+    public Optional<HandValue> calculateHandValue(PokerHand hand) {
+        return handAnalyserService.isAFlush(hand) ? Optional.of(new HandValue(HandType.FLUSH, 0, hand.getCards())) : Optional
+                .empty();
     }
 
 }
