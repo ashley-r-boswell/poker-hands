@@ -1,5 +1,7 @@
 package com.pokerhands.core.enumerations;
 
+import com.pokerhands.core.exceptions.PokerHandInitialisationException;
+
 import java.util.stream.Stream;
 
 public enum CardNumber {
@@ -20,6 +22,6 @@ public enum CardNumber {
         return Stream.of(values())
                      .filter(cardNumber -> cardNumber.getCharacter() == character)
                      .findFirst()
-                     .orElse(null);
+                     .orElseThrow(() -> new PokerHandInitialisationException("Unknown cardNumber: " + character));
     }
 }
