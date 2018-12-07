@@ -7,7 +7,7 @@ import com.google.inject.TypeLiteral;
 import com.pokerhands.core.aggregates.PokerHand;
 import com.pokerhands.core.comparison.StandardFiveCardPokerModule;
 import com.pokerhands.core.exceptions.PokerHandComparasonException;
-import com.pokerhands.core.exceptions.PolkerHandInitialisationException;
+import com.pokerhands.core.exceptions.PokerHandInitialisationException;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -29,27 +29,27 @@ public class BadInput {
         comparator.compare(new PokerHand("2H3C6SAHAS"), new PokerHand("2H3C6SAHAS"));
     }
 
-    @Test(expected = PolkerHandInitialisationException.class)
+    @Test(expected = PokerHandInitialisationException.class)
     public void duplicateCardsInHand() {
         new PokerHand("2H2H6SAHAS");
     }
 
-    @Test(expected = PolkerHandInitialisationException.class)
+    @Test(expected = PokerHandInitialisationException.class)
     public void shortCardString() {
         new PokerHand("2H3C6SAHA");
     }
 
-    @Test(expected = PolkerHandInitialisationException.class)
+    @Test(expected = PokerHandInitialisationException.class)
     public void invalidCardNumber() {
         new PokerHand("2H3C6SAH1S");
     }
 
-    @Test(expected = PolkerHandInitialisationException.class)
+    @Test(expected = PokerHandInitialisationException.class)
     public void invalidCardSuit() {
         new PokerHand("2H3C6SAH2Y");
     }
 
-    @Test(expected = PolkerHandInitialisationException.class)
+    @Test(expected = PokerHandInitialisationException.class)
     public void tooManyCards() {
         new PokerHand("2H3C6SAHASQH");
     }
