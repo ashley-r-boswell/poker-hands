@@ -40,8 +40,8 @@ public class HandValue implements Comparable<HandValue> {
             return valueComparison;
         }
 
-        int[] myCardsSorted = remainingCards.stream().mapToInt(c -> c.number.ordinal()).sorted().toArray();
-        int[] otherCardsSorted = otherHand.remainingCards.stream().mapToInt(c -> c.number.ordinal()).sorted()
+        int[] myCardsSorted = remainingCards.stream().mapToInt(c -> c.getNumber().ordinal()).sorted().toArray();
+        int[] otherCardsSorted = otherHand.remainingCards.stream().mapToInt(c -> c.getNumber().ordinal()).sorted()
                                                          .toArray();
         Arrays.sort(otherCardsSorted);
         for (int i = myCardsSorted.length - 1; i >= 0; i--) {

@@ -2,6 +2,7 @@ package com.pokerhands.core.comparison;
 
 import com.google.inject.Inject;
 import com.pokerhands.core.aggregates.PokerHand;
+import com.pokerhands.core.entities.Card;
 import com.pokerhands.core.enumerations.HandType;
 import com.pokerhands.core.valueobjects.HandValue;
 
@@ -12,7 +13,7 @@ public class PairHandAnalyser implements HandTypeAnalyser {
 
     @Override
     public HandValue calculateHandValue(PokerHand hand) {
-        return handAnalyserService.calculateHandValue(hand, HandType.PAIR, 2, c -> c.number);
+        return handAnalyserService.calculateHandValue(hand, HandType.PAIR, 2, Card::getNumber);
     }
 
 }

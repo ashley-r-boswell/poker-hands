@@ -18,10 +18,10 @@ public class FullHouseAnalyser implements HandTypeAnalyser {
     public HandValue calculateHandValue(PokerHand hand) {
         HandValue retval = null;
         Set<Card> cards = new HashSet<>(hand.getCards());
-        Set<Card> theThree = handAnalyserService.takeGroup(cards, 3, c -> c.number);
-        Set<Card> theTwo = handAnalyserService.takeGroup(cards, 2, c -> c.number);
+        Set<Card> theThree = handAnalyserService.takeGroup(cards, 3, Card::getNumber);
+        Set<Card> theTwo = handAnalyserService.takeGroup(cards, 2, Card::getNumber);
         if ((theThree != null) && (theTwo != null)) {
-            retval = new HandValue(HandType.FULL_HOUSE, theThree.iterator().next().number.ordinal());
+            retval = new HandValue(HandType.FULL_HOUSE, theThree.iterator().next().getNumber().ordinal());
         }
         return retval;
     }
