@@ -12,11 +12,14 @@ public enum CardNumber {
         this.character = character;
     }
 
-    public char getCharacter() {
+    private char getCharacter() {
         return character;
     }
 
     public static CardNumber fromCharacter(char character) {
-        return Stream.of(values()).filter(n -> n.getCharacter() == character).findFirst().orElse(null);
+        return Stream.of(values())
+                     .filter(cardNumber -> cardNumber.getCharacter() == character)
+                     .findFirst()
+                     .orElse(null);
     }
 }
