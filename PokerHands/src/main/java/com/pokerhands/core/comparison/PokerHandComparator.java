@@ -23,8 +23,10 @@ public class PokerHandComparator implements Comparator<PokerHand> {
     }
 
     private HandValue getBestScoreForHand(PokerHand hand) {
-        return rules.stream().map(r -> r.calculateHandValue(hand)).filter(Objects::nonNull)
-                    .sorted(Comparator.reverseOrder()).findFirst()
+        return rules.stream()
+                    .map(r -> r.calculateHandValue(hand))
+                    .filter(Objects::nonNull)
+                    .min(Comparator.reverseOrder())
                     .orElseThrow(() -> new PokerHandComparasonException("Could not calculate a score for a hand"));
     }
 
