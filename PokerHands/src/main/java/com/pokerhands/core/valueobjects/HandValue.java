@@ -9,9 +9,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class HandValue implements Comparable<HandValue> {
-    private HandType type;
-    private int typeSpecificValue;
-    private Set<Card> remainingCards;
+    private final HandType type;
+    private final int typeSpecificValue;
+    private final Set<Card> remainingCards;
 
     public HandValue(HandType type, int typeSpecificValue) {
         this(type, typeSpecificValue, null);

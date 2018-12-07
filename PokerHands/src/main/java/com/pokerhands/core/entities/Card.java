@@ -7,8 +7,8 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 public class Card {
-    public CardNumber number;
-    public CardSuit suit;
+    public final CardNumber number;
+    public final CardSuit suit;
 
     public Card(char numberCharacter, char suitCharacter) {
         number = CardNumber.fromCharacter(numberCharacter);
