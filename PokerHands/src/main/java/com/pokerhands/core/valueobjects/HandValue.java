@@ -3,10 +3,7 @@ package com.pokerhands.core.valueobjects;
 import com.pokerhands.core.entities.Card;
 import com.pokerhands.core.enumerations.HandType;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class HandValue implements Comparable<HandValue> {
     private final HandType type;
@@ -14,16 +11,13 @@ public class HandValue implements Comparable<HandValue> {
     private final Set<Card> remainingCards;
 
     public HandValue(HandType type, int typeSpecificValue) {
-        this(type, typeSpecificValue, null);
+        this(type, typeSpecificValue, Collections.emptySet());
     }
 
     public HandValue(HandType type, int typeSpecificValue, Collection<Card> remainingCards) {
-        this.remainingCards = new HashSet<>();
+        this.remainingCards = new HashSet<>(remainingCards);
         this.type = type;
         this.typeSpecificValue = typeSpecificValue;
-        if (remainingCards != null) {
-            this.remainingCards.addAll(remainingCards);
-        }
     }
 
     @Override
