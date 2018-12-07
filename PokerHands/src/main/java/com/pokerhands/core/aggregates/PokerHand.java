@@ -1,13 +1,9 @@
 package com.pokerhands.core.aggregates;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 import com.pokerhands.core.entities.Card;
 import com.pokerhands.core.exceptions.PolkerHandInitialisationException;
+
+import java.util.*;
 
 public class PokerHand {
 

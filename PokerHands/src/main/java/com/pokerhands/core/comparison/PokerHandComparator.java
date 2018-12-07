@@ -1,12 +1,12 @@
 package com.pokerhands.core.comparison;
 
-import java.util.Comparator;
-import java.util.Set;
-
 import com.google.inject.Inject;
 import com.pokerhands.core.aggregates.PokerHand;
 import com.pokerhands.core.exceptions.PokerHandComparasonException;
 import com.pokerhands.core.valueobjects.HandValue;
+
+import java.util.Comparator;
+import java.util.Set;
 
 public class PokerHandComparator implements Comparator<PokerHand> {
 

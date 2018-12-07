@@ -1,15 +1,15 @@
 package com.pokerhands.core.comparison;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 import com.google.inject.Inject;
 import com.pokerhands.core.aggregates.PokerHand;
 import com.pokerhands.core.entities.Card;
 import com.pokerhands.core.enumerations.HandType;
 import com.pokerhands.core.valueobjects.HandValue;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class TwoPairAnalyser implements HandTypeAnalyser {
 

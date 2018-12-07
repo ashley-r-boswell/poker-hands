@@ -1,20 +1,19 @@
 package com.pokerhands.tests;
 
-import static org.junit.Assert.assertTrue;
-
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-
-import org.junit.Before;
-import org.junit.Test;
-
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.Key;
 import com.google.inject.TypeLiteral;
 import com.pokerhands.core.aggregates.PokerHand;
 import com.pokerhands.core.comparison.StandardFiveCardPokerModule;
+import org.junit.Before;
+import org.junit.Test;
+
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+
+import static org.junit.Assert.assertTrue;
 
 public class ComparisonTests {
 

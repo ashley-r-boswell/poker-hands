@@ -1,28 +1,14 @@
 package com.pokerhands.tests;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
-import org.junit.Before;
-import org.junit.Test;
-
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.pokerhands.core.aggregates.PokerHand;
-import com.pokerhands.core.comparison.FlushAnalyser;
-import com.pokerhands.core.comparison.FourOfAKindAnalyser;
-import com.pokerhands.core.comparison.FullHouseAnalyser;
-import com.pokerhands.core.comparison.HandTypeAnalyser;
-import com.pokerhands.core.comparison.HighCardHandAnalyser;
-import com.pokerhands.core.comparison.PairHandAnalyser;
-import com.pokerhands.core.comparison.StandardFiveCardPokerModule;
-import com.pokerhands.core.comparison.StraightAnalyser;
-import com.pokerhands.core.comparison.StraightFlushAnalyser;
-import com.pokerhands.core.comparison.ThreeOfAKindAnalyser;
-import com.pokerhands.core.comparison.TwoPairAnalyser;
+import com.pokerhands.core.comparison.*;
 import com.pokerhands.core.valueobjects.HandValue;
+import org.junit.Before;
+import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 public class SpecificAnalyserTests {
 

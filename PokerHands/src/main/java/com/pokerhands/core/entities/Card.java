@@ -1,11 +1,10 @@
 package com.pokerhands.core.entities;
 
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-
 import com.pokerhands.core.enumerations.CardNumber;
 import com.pokerhands.core.enumerations.CardSuit;
 import com.pokerhands.core.exceptions.PolkerHandInitialisationException;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 public class Card {
     public CardNumber number;

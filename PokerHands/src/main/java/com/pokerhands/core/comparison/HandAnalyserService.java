@@ -1,16 +1,16 @@
 package com.pokerhands.core.comparison;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-
 import com.pokerhands.core.aggregates.PokerHand;
 import com.pokerhands.core.entities.Card;
 import com.pokerhands.core.enumerations.CardSuit;
 import com.pokerhands.core.enumerations.HandType;
 import com.pokerhands.core.valueobjects.HandValue;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class HandAnalyserService {
 

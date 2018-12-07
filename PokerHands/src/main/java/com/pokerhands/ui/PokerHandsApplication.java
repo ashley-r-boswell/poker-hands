@@ -1,7 +1,5 @@
 package com.pokerhands.ui;
 
-import java.util.Comparator;
-
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.Key;
@@ -9,7 +7,6 @@ import com.google.inject.TypeLiteral;
 import com.pokerhands.core.aggregates.PokerHand;
 import com.pokerhands.core.comparison.StandardFiveCardPokerModule;
 import com.pokerhands.core.exceptions.PokerException;
-
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -18,6 +15,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
+import java.util.Comparator;
 
 @SuppressWarnings("restriction")
 public class PokerHandsApplication extends Application {

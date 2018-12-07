@@ -1,10 +1,5 @@
 package com.pokerhands.tests;
 
-import java.util.Comparator;
-
-import org.junit.Before;
-import org.junit.Test;
-
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.Key;
@@ -13,6 +8,10 @@ import com.pokerhands.core.aggregates.PokerHand;
 import com.pokerhands.core.comparison.StandardFiveCardPokerModule;
 import com.pokerhands.core.exceptions.PokerHandComparasonException;
 import com.pokerhands.core.exceptions.PolkerHandInitialisationException;
+import org.junit.Before;
+import org.junit.Test;
+
+import java.util.Comparator;
 
 public class BadInput {
 

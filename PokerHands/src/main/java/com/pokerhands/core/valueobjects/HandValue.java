@@ -1,12 +1,12 @@
 package com.pokerhands.core.valueobjects;
 
+import com.pokerhands.core.entities.Card;
+import com.pokerhands.core.enumerations.HandType;
+
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
-
-import com.pokerhands.core.entities.Card;
-import com.pokerhands.core.enumerations.HandType;
 
 public class HandValue implements Comparable<HandValue> {
     private HandType _type;

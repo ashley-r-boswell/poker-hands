@@ -1,11 +1,11 @@
 package com.pokerhands.core.comparison;
 
-import java.util.Comparator;
-
 import com.google.inject.AbstractModule;
 import com.google.inject.TypeLiteral;
 import com.google.inject.multibindings.Multibinder;
 import com.pokerhands.core.aggregates.PokerHand;
+
+import java.util.Comparator;
 
 public class StandardFiveCardPokerModule extends AbstractModule {
 
