@@ -25,8 +25,13 @@ public class BadInput {
     }
 
     @Test(expected = PokerHandComparasonException.class)
-    public void duplicateCards() {
+    public void duplicateCardsInComparison() {
         comparator.compare(new PokerHand("2H3C6SAHAS"), new PokerHand("2H3C6SAHAS"));
+    }
+
+    @Test(expected = PolkerHandInitialisationException.class)
+    public void duplicateCardsInHand() {
+        new PokerHand("2H2H6SAHAS");
     }
 
     @Test(expected = PolkerHandInitialisationException.class)
