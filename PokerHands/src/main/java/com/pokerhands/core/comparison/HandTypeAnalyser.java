@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface HandTypeAnalyser {
     /*
-     * Returns null if there is no match.
+     * Returns Optional.empty() if the analyser cannot handle this type.
      */
     Optional<HandValue> calculateHandValue(PokerHand hand);
 }
