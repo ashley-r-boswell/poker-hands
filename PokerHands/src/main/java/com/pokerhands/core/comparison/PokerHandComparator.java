@@ -6,6 +6,7 @@ import com.pokerhands.core.exceptions.PokerHandComparasonException;
 import com.pokerhands.core.valueobjects.HandValue;
 
 import java.util.Comparator;
+import java.util.Objects;
 import java.util.Set;
 
 public class PokerHandComparator implements Comparator<PokerHand> {
@@ -15,14 +16,14 @@ public class PokerHandComparator implements Comparator<PokerHand> {
 
     @Override
     public int compare(PokerHand hand1, PokerHand hand2) {
-        if (hand1.getCards().stream().anyMatch(c1 -> hand2.getCards().stream().anyMatch(c2 -> c1.equals(c2)))) {
+        if (hand1.getCards().stream().anyMatch(c1 -> hand2.getCards().stream().anyMatch(c1::equals))) {
             throw new PokerHandComparasonException("Cannot compare two hands when any card from each are the same.");
         }
         return getBestScoreForHand(hand1).compareTo(getBestScoreForHand(hand2));
     }
 
     private HandValue getBestScoreForHand(PokerHand hand) {
-        return rules.stream().map(r -> r.calculateHandValue(hand)).filter(v -> v != null)
+        return rules.stream().map(r -> r.calculateHandValue(hand)).filter(Objects::nonNull)
                     .sorted(Comparator.reverseOrder()).findFirst()
                     .orElseThrow(() -> new PokerHandComparasonException("Could not calculate a score for a hand"));
     }
