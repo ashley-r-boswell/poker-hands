@@ -8,11 +8,11 @@ import com.pokerhands.core.valueobjects.HandValue;
 public class PairHandAnalyser implements HandTypeAnalyser {
 
     @Inject
-    private HandAnalyserService _handAnalyserService;
+    private HandAnalyserService handAnalyserService;
 
     @Override
     public HandValue calculateHandValue(PokerHand hand) {
-        return _handAnalyserService.calculateHandValue(hand, HandType.PAIR, 2, c -> c.number);
+        return handAnalyserService.calculateHandValue(hand, HandType.PAIR, 2, c -> c.number);
     }
 
 }

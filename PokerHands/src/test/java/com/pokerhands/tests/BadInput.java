@@ -15,18 +15,18 @@ import java.util.Comparator;
 
 public class BadInput {
 
-    private Comparator<PokerHand> _comparator;
+    private Comparator<PokerHand> comparator;
 
     @Before
     public void setUp() {
         Injector injector = Guice.createInjector(new StandardFiveCardPokerModule());
-        _comparator = injector.getInstance(Key.get(new TypeLiteral<Comparator<PokerHand>>() {
+        comparator = injector.getInstance(Key.get(new TypeLiteral<Comparator<PokerHand>>() {
         }));
     }
 
     @Test(expected = PokerHandComparasonException.class)
     public void duplicateCards() {
-        _comparator.compare(new PokerHand("2H3C6SAHAS"), new PokerHand("2H3C6SAHAS"));
+        comparator.compare(new PokerHand("2H3C6SAHAS"), new PokerHand("2H3C6SAHAS"));
     }
 
     @Test(expected = PolkerHandInitialisationException.class)

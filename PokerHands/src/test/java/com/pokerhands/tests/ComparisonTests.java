@@ -17,18 +17,18 @@ import static org.junit.Assert.assertTrue;
 
 public class ComparisonTests {
 
-    private Comparator<PokerHand> _comparator;
+    private Comparator<PokerHand> comparator;
 
     @Before
     public void setUp() {
         Injector injector = Guice.createInjector(new StandardFiveCardPokerModule());
-        _comparator = injector.getInstance(Key.get(new TypeLiteral<Comparator<PokerHand>>() {
+        comparator = injector.getInstance(Key.get(new TypeLiteral<Comparator<PokerHand>>() {
         }));
     }
 
     @Test
     public void runAnyComparison() {
-        _comparator.compare(new PokerHand("2H3C6SAHAS"), new PokerHand("3H4C5SKHKS"));
+        comparator.compare(new PokerHand("2H3C6SAHAS"), new PokerHand("3H4C5SKHKS"));
     }
 
     @Test
@@ -40,7 +40,7 @@ public class ComparisonTests {
                     .size(); winningHandIndex++) {
                 String losingHandString = handDescriptions.get(losingHandIndex);
                 String winningHandString = handDescriptions.get(winningHandIndex);
-                int result = _comparator.compare(new PokerHand(losingHandString), new PokerHand(winningHandString));
+                int result = comparator.compare(new PokerHand(losingHandString), new PokerHand(winningHandString));
                 assertTrue(losingHandString + " should not beat " + winningHandString, result < 0);
             }
         }

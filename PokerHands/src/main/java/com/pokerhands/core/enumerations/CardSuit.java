@@ -5,14 +5,14 @@ import java.util.stream.Stream;
 public enum CardSuit {
     CLUBS('C'), SPADES('S'), DIAMONDS('D'), HEARTS('H');
 
-    private final char _character;
+    private final char character;
 
     CardSuit(char character) {
-        _character = character;
+        this.character = character;
     }
 
     public char getCharacter() {
-        return _character;
+        return character;
     }
 
     public static CardSuit fromCharacter(char character) {

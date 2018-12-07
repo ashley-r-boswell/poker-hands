@@ -12,16 +12,16 @@ import static org.junit.Assert.*;
 
 public class SpecificAnalyserTests {
 
-    private Injector _injector;
+    private Injector injector;
 
     @Before
     public void setUp() throws Exception {
-        _injector = Guice.createInjector(new StandardFiveCardPokerModule());
+        injector = Guice.createInjector(new StandardFiveCardPokerModule());
     }
 
     private void testAnalyser(Class<? extends HandTypeAnalyser> classToTest, String ownHand, String otherHand,
                               Outcome expectedOutcome) {
-        HandTypeAnalyser testSubject = _injector.getInstance(classToTest);
+        HandTypeAnalyser testSubject = injector.getInstance(classToTest);
         HandValue ownHandValue = testSubject.calculateHandValue(new PokerHand(ownHand));
         assertNotNull("Own hand was not detected as the expected type", ownHandValue);
         HandValue otherHandValue = testSubject.calculateHandValue(new PokerHand(otherHand));

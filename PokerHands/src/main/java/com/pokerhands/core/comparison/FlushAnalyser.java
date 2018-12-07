@@ -8,12 +8,12 @@ import com.pokerhands.core.valueobjects.HandValue;
 public class FlushAnalyser implements HandTypeAnalyser {
 
     @Inject
-    private HandAnalyserService _handAnalyserService;
+    private HandAnalyserService handAnalyserService;
 
     @Override
     public HandValue calculateHandValue(PokerHand hand) {
         HandValue retval = null;
-        if (_handAnalyserService.isAFlush(hand)) {
+        if (handAnalyserService.isAFlush(hand)) {
             retval = new HandValue(HandType.FLUSH, 0, hand.getCards());
         }
         return retval;

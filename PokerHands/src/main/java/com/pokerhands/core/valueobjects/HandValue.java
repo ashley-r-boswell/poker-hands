@@ -9,20 +9,20 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class HandValue implements Comparable<HandValue> {
-    private HandType _type;
-    private int _typeSpecificValue;
-    private Set<Card> _remainingCards;
+    private HandType type;
+    private int typeSpecificValue;
+    private Set<Card> remainingCards;
 
     public HandValue(HandType type, int typeSpecificValue) {
         this(type, typeSpecificValue, null);
     }
 
     public HandValue(HandType type, int typeSpecificValue, Collection<Card> remainingCards) {
-        _remainingCards = new HashSet<>();
-        _type = type;
-        _typeSpecificValue = typeSpecificValue;
+        this.remainingCards = new HashSet<>();
+        this.type = type;
+        this.typeSpecificValue = typeSpecificValue;
         if (remainingCards != null) {
-            _remainingCards.addAll(remainingCards);
+            this.remainingCards.addAll(remainingCards);
         }
     }
 
@@ -31,18 +31,18 @@ public class HandValue implements Comparable<HandValue> {
         if (this == otherHand) {
             return 0;
         }
-        int typeComparison = _type.compareTo(otherHand._type);
+        int typeComparison = type.compareTo(otherHand.type);
         if (typeComparison != 0) {
             return typeComparison;
         }
-        int valueComparison = _typeSpecificValue - otherHand._typeSpecificValue;
+        int valueComparison = typeSpecificValue - otherHand.typeSpecificValue;
         if (valueComparison != 0) {
             return valueComparison;
         }
 
-        int[] myCardsSorted = _remainingCards.stream().mapToInt(c -> c.number.ordinal()).sorted().toArray();
-        int[] otherCardsSorted = otherHand._remainingCards.stream().mapToInt(c -> c.number.ordinal()).sorted()
-                                                          .toArray();
+        int[] myCardsSorted = remainingCards.stream().mapToInt(c -> c.number.ordinal()).sorted().toArray();
+        int[] otherCardsSorted = otherHand.remainingCards.stream().mapToInt(c -> c.number.ordinal()).sorted()
+                                                         .toArray();
         Arrays.sort(otherCardsSorted);
         for (int i = myCardsSorted.length - 1; i >= 0; i--) {
             int comparison = myCardsSorted[i] - otherCardsSorted[i];

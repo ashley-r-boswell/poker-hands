@@ -8,7 +8,7 @@ import java.util.*;
 public class PokerHand {
 
     private static final int NUMBER_OF_CARDS = 5;
-    private Set<Card> _cards;
+    private Set<Card> cards;
 
     public PokerHand(Card... cards) {
         initialise(Arrays.asList(cards));
@@ -31,9 +31,9 @@ public class PokerHand {
         if (cards.size() != NUMBER_OF_CARDS) {
             throw new PolkerHandInitialisationException("A hand must contain " + NUMBER_OF_CARDS + " cards");
         }
-        _cards = new HashSet<>();
+        this.cards = new HashSet<>();
         for (Card card : cards) {
-            if (!_cards.add(card)) {
+            if (!this.cards.add(card)) {
                 throw new PolkerHandInitialisationException(
                         "Cannot have more than 1 card of the same number and suit.");
             }
@@ -41,7 +41,7 @@ public class PokerHand {
     }
 
     public Set<Card> getCards() {
-        return _cards;
+        return cards;
     }
 
 }

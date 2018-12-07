@@ -21,14 +21,14 @@ import java.util.Comparator;
 @SuppressWarnings("restriction")
 public class PokerHandsApplication extends Application {
 
-    private final Comparator<PokerHand> _comparator;
+    private final Comparator<PokerHand> comparator;
     private TextField player1CardsText;
     private TextField player2CardsText;
     private Label resultLabel;
 
     public PokerHandsApplication() {
         Injector injector = Guice.createInjector(new StandardFiveCardPokerModule());
-        _comparator = injector.getInstance(Key.get(new TypeLiteral<Comparator<PokerHand>>() {
+        comparator = injector.getInstance(Key.get(new TypeLiteral<Comparator<PokerHand>>() {
         }));
     }
 
@@ -40,7 +40,7 @@ public class PokerHandsApplication extends Application {
         submitButton.setText("Compare");
         submitButton.setOnAction((event) -> {
             try {
-                int comparison = _comparator.compare(new PokerHand(player1CardsText.getText()),
+                int comparison = comparator.compare(new PokerHand(player1CardsText.getText()),
                         new PokerHand(player2CardsText.getText()));
                 if (comparison > 0) {
                     resultLabel.setText("Player 1 wins!");

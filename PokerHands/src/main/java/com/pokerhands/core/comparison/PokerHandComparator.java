@@ -11,7 +11,7 @@ import java.util.Set;
 public class PokerHandComparator implements Comparator<PokerHand> {
 
     @Inject
-    private Set<HandTypeAnalyser> _rules;
+    private Set<HandTypeAnalyser> rules;
 
     @Override
     public int compare(PokerHand hand1, PokerHand hand2) {
@@ -22,9 +22,9 @@ public class PokerHandComparator implements Comparator<PokerHand> {
     }
 
     private HandValue getBestScoreForHand(PokerHand hand) {
-        return _rules.stream().map(r -> r.calculateHandValue(hand)).filter(v -> v != null)
-                     .sorted(Comparator.reverseOrder()).findFirst()
-                     .orElseThrow(() -> new PokerHandComparasonException("Could not calculate a score for a hand"));
+        return rules.stream().map(r -> r.calculateHandValue(hand)).filter(v -> v != null)
+                    .sorted(Comparator.reverseOrder()).findFirst()
+                    .orElseThrow(() -> new PokerHandComparasonException("Could not calculate a score for a hand"));
     }
 
 }
