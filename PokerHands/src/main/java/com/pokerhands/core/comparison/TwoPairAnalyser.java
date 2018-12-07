@@ -18,7 +18,6 @@ public class TwoPairAnalyser implements HandTypeAnalyser {
 
     @Override
     public HandValue calculateHandValue(PokerHand hand) {
-        HandValue retval = null;
         Set<Card> cards = new HashSet<>(hand.getCards());
         Set<Card> pair1 = handAnalyserService.takeGroup(cards, 2, Card::getNumber);
         Set<Card> pair2 = handAnalyserService.takeGroup(cards, 2, Card::getNumber);
@@ -28,9 +27,9 @@ public class TwoPairAnalyser implements HandTypeAnalyser {
             numbers.add(pair2.iterator().next().getNumber().ordinal());
             int value = numbers.stream().max(Integer::compare).orElse(0) * 100;
             value += numbers.stream().min(Integer::compare).orElse(0);
-            retval = new HandValue(HandType.TWO_PAIRS, value, cards);
+            return new HandValue(HandType.TWO_PAIRS, value, cards);
         }
-        return retval;
+        return null;
     }
 
 }

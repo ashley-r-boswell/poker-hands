@@ -17,7 +17,6 @@ public class HandAnalyserService {
     private static final int HAND_SIZE = 5;
 
     public int valueAsAStraight(PokerHand hand) {
-        int retval = -1;
         int[] numberValues = hand.getCards().stream().mapToInt(c -> c.getNumber().ordinal()).sorted().toArray();
         boolean isAStraight = false;
         if (numberValues.length == HAND_SIZE) {
@@ -29,9 +28,9 @@ public class HandAnalyserService {
             }
         }
         if (isAStraight) {
-            retval = numberValues[numberValues.length - 1];
+            return numberValues[numberValues.length - 1];
         }
-        return retval;
+        return -1;
     }
 
     public boolean isAFlush(PokerHand hand) {
@@ -40,23 +39,21 @@ public class HandAnalyserService {
     }
 
     public HandValue calculateHandValue(PokerHand hand, HandType type, int groupSize, Function<Card, ?> groupBy) {
-        HandValue retval = null;
         Set<Card> cards = new HashSet<>(hand.getCards());
         Set<Card> group = takeGroup(cards, groupSize, groupBy);
         if (group != null) {
-            retval = new HandValue(type, group.iterator().next().getNumber().ordinal(), cards);
+            return new HandValue(type, group.iterator().next().getNumber().ordinal(), cards);
         }
-        return retval;
+        return null;
     }
 
     public Set<Card> takeGroup(Set<Card> allCards, int groupSize, Function<Card, ?> groupBy) {
-        Set<Card> retval = null;
         List<Card> takenCards = allCards.stream().collect(Collectors.groupingBy(groupBy)).values().stream()
                                         .filter(g -> g.size() >= groupSize).findFirst().orElse(null);
         if (takenCards != null) {
             allCards.removeAll(takenCards);
-            retval = new HashSet<>(takenCards);
+            return new HashSet<>(takenCards);
         }
-        return retval;
+        return null;
     }
 }

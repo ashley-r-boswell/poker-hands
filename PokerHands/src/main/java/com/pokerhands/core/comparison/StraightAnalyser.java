@@ -12,12 +12,11 @@ public class StraightAnalyser implements HandTypeAnalyser {
 
     @Override
     public HandValue calculateHandValue(PokerHand hand) {
-        HandValue retval = null;
         int value = handAnalyserService.valueAsAStraight(hand);
         if (value >= 0) {
-            retval = new HandValue(HandType.STRAIGHT, value);
+            return new HandValue(HandType.STRAIGHT, value);
         }
-        return retval;
+        return null;
     }
 
 }

@@ -12,11 +12,7 @@ public class FlushAnalyser implements HandTypeAnalyser {
 
     @Override
     public HandValue calculateHandValue(PokerHand hand) {
-        HandValue retval = null;
-        if (handAnalyserService.isAFlush(hand)) {
-            retval = new HandValue(HandType.FLUSH, 0, hand.getCards());
-        }
-        return retval;
+        return handAnalyserService.isAFlush(hand) ? new HandValue(HandType.FLUSH, 0, hand.getCards()) : null;
     }
 
 }
