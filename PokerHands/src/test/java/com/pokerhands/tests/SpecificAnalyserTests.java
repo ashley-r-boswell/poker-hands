@@ -15,7 +15,7 @@ public class SpecificAnalyserTests {
     private Injector injector;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         injector = Guice.createInjector(new StandardFiveCardPokerModule());
     }
 
