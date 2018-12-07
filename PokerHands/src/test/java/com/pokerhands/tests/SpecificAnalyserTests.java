@@ -18,7 +18,7 @@ public class SpecificAnalyserTests {
 
     @Before
     public void setUp() {
-        injector = Guice.createInjector(new StandardFiveCardPokerModule());
+        injector = Guice.createInjector(new ComparisonModule());
     }
 
     private void testAnalyser(Class<? extends HandTypeAnalyser> classToTest, String ownHand, String otherHand,

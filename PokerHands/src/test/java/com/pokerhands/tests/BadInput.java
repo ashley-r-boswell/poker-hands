@@ -5,7 +5,7 @@ import com.google.inject.Injector;
 import com.google.inject.Key;
 import com.google.inject.TypeLiteral;
 import com.pokerhands.core.aggregates.PokerHand;
-import com.pokerhands.core.comparison.StandardFiveCardPokerModule;
+import com.pokerhands.core.comparison.ComparisonModule;
 import com.pokerhands.core.exceptions.PokerHandComparasonException;
 import com.pokerhands.core.exceptions.PokerHandInitialisationException;
 import org.junit.Before;
@@ -19,7 +19,7 @@ public class BadInput {
 
     @Before
     public void setUp() {
-        Injector injector = Guice.createInjector(new StandardFiveCardPokerModule());
+        Injector injector = Guice.createInjector(new ComparisonModule());
         comparator = injector.getInstance(Key.get(new TypeLiteral<Comparator<PokerHand>>() {
         }));
     }
