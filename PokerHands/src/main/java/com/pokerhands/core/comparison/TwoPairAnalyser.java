@@ -18,19 +18,19 @@ public class TwoPairAnalyser implements HandTypeAnalyser {
 
     @Override
     public HandValue calculateHandValue(PokerHand hand) {
-	HandValue retval = null;
-	Set<Card> cards = new HashSet<>(hand.getCards());
-	Set<Card> pair1 = _handAnalyserService.takeGroup(cards, 2, c -> c.number);
-	Set<Card> pair2 = _handAnalyserService.takeGroup(cards, 2, c -> c.number);
-	if ((pair1 != null) && (pair2 != null)) {
-	    List<Integer> numbers = new ArrayList<>();
-	    numbers.add(pair1.iterator().next().number.ordinal());
-	    numbers.add(pair2.iterator().next().number.ordinal());
-	    int value = numbers.stream().max(Integer::compare).orElse(0) * 100;
-	    value += numbers.stream().min(Integer::compare).orElse(0);
-	    retval = new HandValue(HandType.TWO_PAIRS, value, cards);
-	}
-	return retval;
+        HandValue retval = null;
+        Set<Card> cards = new HashSet<>(hand.getCards());
+        Set<Card> pair1 = _handAnalyserService.takeGroup(cards, 2, c -> c.number);
+        Set<Card> pair2 = _handAnalyserService.takeGroup(cards, 2, c -> c.number);
+        if ((pair1 != null) && (pair2 != null)) {
+            List<Integer> numbers = new ArrayList<>();
+            numbers.add(pair1.iterator().next().number.ordinal());
+            numbers.add(pair2.iterator().next().number.ordinal());
+            int value = numbers.stream().max(Integer::compare).orElse(0) * 100;
+            value += numbers.stream().min(Integer::compare).orElse(0);
+            retval = new HandValue(HandType.TWO_PAIRS, value, cards);
+        }
+        return retval;
     }
 
 }

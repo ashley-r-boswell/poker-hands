@@ -15,16 +15,16 @@ public class PokerHandComparator implements Comparator<PokerHand> {
 
     @Override
     public int compare(PokerHand hand1, PokerHand hand2) {
-	if (hand1.getCards().stream().anyMatch(c1 -> hand2.getCards().stream().anyMatch(c2 -> c1.equals(c2)))) {
-	    throw new PokerHandComparasonException("Cannot compare two hands when any card from each are the same.");
-	}
-	return getBestScoreForHand(hand1).compareTo(getBestScoreForHand(hand2));
+        if (hand1.getCards().stream().anyMatch(c1 -> hand2.getCards().stream().anyMatch(c2 -> c1.equals(c2)))) {
+            throw new PokerHandComparasonException("Cannot compare two hands when any card from each are the same.");
+        }
+        return getBestScoreForHand(hand1).compareTo(getBestScoreForHand(hand2));
     }
 
     private HandValue getBestScoreForHand(PokerHand hand) {
-	return _rules.stream().map(r -> r.calculateHandValue(hand)).filter(v -> v != null)
-		.sorted(Comparator.reverseOrder()).findFirst()
-		.orElseThrow(() -> new PokerHandComparasonException("Could not calculate a score for a hand"));
+        return _rules.stream().map(r -> r.calculateHandValue(hand)).filter(v -> v != null)
+                     .sorted(Comparator.reverseOrder()).findFirst()
+                     .orElseThrow(() -> new PokerHandComparasonException("Could not calculate a score for a hand"));
     }
 
 }

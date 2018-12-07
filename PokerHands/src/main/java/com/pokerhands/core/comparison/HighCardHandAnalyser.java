@@ -8,7 +8,7 @@ public class HighCardHandAnalyser implements HandTypeAnalyser {
 
     @Override
     public HandValue calculateHandValue(PokerHand hand) {
-	return new HandValue(HandType.HIGH_CARD, 0, hand.getCards());
+        return new HandValue(HandType.HIGH_CARD, 0, hand.getCards());
     }
 
 }

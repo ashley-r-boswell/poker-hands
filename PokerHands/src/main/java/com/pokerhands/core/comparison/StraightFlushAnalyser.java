@@ -12,11 +12,11 @@ public class StraightFlushAnalyser implements HandTypeAnalyser {
 
     @Override
     public HandValue calculateHandValue(PokerHand hand) {
-	HandValue retval = null;
-	int value = _handAnalyserService.valueAsAStraight(hand);
-	if (_handAnalyserService.isAFlush(hand) && (value >= 0)) {
-	    retval = new HandValue(HandType.STRAIGHT_FLUSH, value);
-	}
-	return retval;
+        HandValue retval = null;
+        int value = _handAnalyserService.valueAsAStraight(hand);
+        if (_handAnalyserService.isAFlush(hand) && (value >= 0)) {
+            retval = new HandValue(HandType.STRAIGHT_FLUSH, value);
+        }
+        return retval;
     }
 }

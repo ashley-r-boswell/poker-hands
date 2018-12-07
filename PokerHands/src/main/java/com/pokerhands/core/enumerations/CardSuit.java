@@ -8,14 +8,14 @@ public enum CardSuit {
     private final char _character;
 
     CardSuit(char character) {
-	_character = character;
+        _character = character;
     }
 
     public char getCharacter() {
-	return _character;
+        return _character;
     }
 
     public static CardSuit fromCharacter(char character) {
-	return Stream.of(values()).filter(n -> n.getCharacter() == character).findFirst().orElse(null);
+        return Stream.of(values()).filter(n -> n.getCharacter() == character).findFirst().orElse(null);
     }
 }

@@ -12,7 +12,7 @@ public class PairHandAnalyser implements HandTypeAnalyser {
 
     @Override
     public HandValue calculateHandValue(PokerHand hand) {
-	return _handAnalyserService.calculateHandValue(hand, HandType.PAIR, 2, c -> c.number);
+        return _handAnalyserService.calculateHandValue(hand, HandType.PAIR, 2, c -> c.number);
     }
 
 }

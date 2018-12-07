@@ -12,30 +12,30 @@ public class Card {
     public CardSuit suit;
 
     public Card(char numberCharacter, char suitCharacter) {
-	number = CardNumber.fromCharacter(numberCharacter);
-	if (number == null) {
-	    throw new PolkerHandInitialisationException("Unknown cardNumber: " + numberCharacter);
-	}
-	suit = CardSuit.fromCharacter(suitCharacter);
-	if (suit == null) {
-	    throw new PolkerHandInitialisationException("Unknown suit: " + suitCharacter);
-	}
+        number = CardNumber.fromCharacter(numberCharacter);
+        if (number == null) {
+            throw new PolkerHandInitialisationException("Unknown cardNumber: " + numberCharacter);
+        }
+        suit = CardSuit.fromCharacter(suitCharacter);
+        if (suit == null) {
+            throw new PolkerHandInitialisationException("Unknown suit: " + suitCharacter);
+        }
     }
 
     @Override
     public int hashCode() {
-	return new HashCodeBuilder(17, 31).append(number).append(suit).toHashCode();
+        return new HashCodeBuilder(17, 31).append(number).append(suit).toHashCode();
     }
 
     @Override
     public boolean equals(Object obj) {
-	if (!(obj instanceof Card))
-	    return false;
-	if (obj == this)
-	    return true;
+        if (!(obj instanceof Card))
+            return false;
+        if (obj == this)
+            return true;
 
-	Card rhs = (Card) obj;
-	return new EqualsBuilder().append(number, rhs.number).append(suit, rhs.suit).isEquals();
+        Card rhs = (Card) obj;
+        return new EqualsBuilder().append(number, rhs.number).append(suit, rhs.suit).isEquals();
     }
 
 }

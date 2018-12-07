@@ -12,7 +12,7 @@ public class ThreeOfAKindAnalyser implements HandTypeAnalyser {
 
     @Override
     public HandValue calculateHandValue(PokerHand hand) {
-	return _handAnalyserService.calculateHandValue(hand, HandType.THREE_OF_A_KIND, 3, c -> c.number);
+        return _handAnalyserService.calculateHandValue(hand, HandType.THREE_OF_A_KIND, 3, c -> c.number);
     }
 
 }

@@ -20,34 +20,34 @@ public class BadInput {
 
     @Before
     public void setUp() {
-	Injector injector = Guice.createInjector(new StandardFiveCardPokerModule());
-	_comparator = injector.getInstance(Key.get(new TypeLiteral<Comparator<PokerHand>>() {
-	}));
+        Injector injector = Guice.createInjector(new StandardFiveCardPokerModule());
+        _comparator = injector.getInstance(Key.get(new TypeLiteral<Comparator<PokerHand>>() {
+        }));
     }
 
     @Test(expected = PokerHandComparasonException.class)
     public void duplicateCards() {
-	_comparator.compare(new PokerHand("2H3C6SAHAS"), new PokerHand("2H3C6SAHAS"));
+        _comparator.compare(new PokerHand("2H3C6SAHAS"), new PokerHand("2H3C6SAHAS"));
     }
 
     @Test(expected = PolkerHandInitialisationException.class)
     public void shortCardString() {
-	new PokerHand("2H3C6SAHA");
+        new PokerHand("2H3C6SAHA");
     }
 
     @Test(expected = PolkerHandInitialisationException.class)
     public void invalidCardNumber() {
-	new PokerHand("2H3C6SAH1S");
+        new PokerHand("2H3C6SAH1S");
     }
 
     @Test(expected = PolkerHandInitialisationException.class)
     public void invalidCardSuit() {
-	new PokerHand("2H3C6SAH2Y");
+        new PokerHand("2H3C6SAH2Y");
     }
 
     @Test(expected = PolkerHandInitialisationException.class)
     public void tooManyCards() {
-	new PokerHand("2H3C6SAHASQH");
+        new PokerHand("2H3C6SAHASQH");
     }
 
 }
