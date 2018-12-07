@@ -18,10 +18,14 @@ public class FullHouseAnalyser implements HandTypeAnalyser {
     @Override
     public Optional<HandValue> calculateHandValue(PokerHand hand) {
         Set<Card> cards = new HashSet<>(hand.getCards());
-        Set<Card> theThree = handAnalyserService.takeGroup(cards, 3, Card::getNumber);
-        Set<Card> theTwo = handAnalyserService.takeGroup(cards, 2, Card::getNumber);
-        if ((theThree != null) && (theTwo != null)) {
-            return Optional.of(new HandValue(HandType.FULL_HOUSE, theThree.iterator().next().getNumber().ordinal()));
+        Optional<Set<Card>> theThree = handAnalyserService.takeGroup(cards, 3, Card::getNumber);
+        Optional<Set<Card>> theTwo = handAnalyserService.takeGroup(cards, 2, Card::getNumber);
+        if (theThree.isPresent() && theTwo.isPresent()) {
+            return Optional.of(new HandValue(HandType.FULL_HOUSE, theThree.get()
+                                                                          .iterator()
+                                                                          .next()
+                                                                          .getNumber()
+                                                                          .ordinal()));
         }
         return Optional.empty();
     }

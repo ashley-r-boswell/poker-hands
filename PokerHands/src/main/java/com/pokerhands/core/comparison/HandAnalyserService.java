@@ -41,17 +41,16 @@ public class HandAnalyserService {
 
     public Optional<HandValue> calculateHandValue(PokerHand hand, HandType type, int groupSize, Function<Card, ?> groupBy) {
         Set<Card> cards = new HashSet<>(hand.getCards());
-        return Optional.ofNullable(takeGroup(cards, groupSize, groupBy))
-                       .map(group -> new HandValue(type, group.iterator().next().getNumber().ordinal(), cards));
+        return takeGroup(cards, groupSize, groupBy).map(group -> new HandValue(type, group.iterator()
+                                                                                          .next()
+                                                                                          .getNumber()
+                                                                                          .ordinal(), cards));
     }
 
-    public Set<Card> takeGroup(Set<Card> allCards, int groupSize, Function<Card, ?> groupBy) {
-        List<Card> takenCards = allCards.stream().collect(Collectors.groupingBy(groupBy)).values().stream()
-                                        .filter(g -> g.size() >= groupSize).findFirst().orElse(null);
-        if (takenCards != null) {
-            allCards.removeAll(takenCards);
-            return new HashSet<>(takenCards);
-        }
-        return null;
+    public Optional<Set<Card>> takeGroup(Set<Card> allCards, int groupSize, Function<Card, ?> groupBy) {
+        Optional<List<Card>> takenCards = allCards.stream().collect(Collectors.groupingBy(groupBy)).values().stream()
+                                                  .filter(g -> g.size() >= groupSize).findFirst();
+        takenCards.ifPresent(allCards::removeAll);
+        return takenCards.map(HashSet::new);
     }
 }
