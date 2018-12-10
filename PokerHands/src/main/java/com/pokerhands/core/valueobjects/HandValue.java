@@ -3,7 +3,10 @@ package com.pokerhands.core.valueobjects;
 import com.pokerhands.core.entities.Card;
 import com.pokerhands.core.enumerations.HandType;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 public class HandValue implements Comparable<HandValue> {
     private final HandType type;
@@ -37,7 +40,7 @@ public class HandValue implements Comparable<HandValue> {
         int[] myCardsSorted = remainingCards.stream().mapToInt(c -> c.getNumber().ordinal()).sorted().toArray();
         int[] otherCardsSorted = otherHand.remainingCards.stream().mapToInt(c -> c.getNumber().ordinal()).sorted()
                                                          .toArray();
-        Arrays.sort(otherCardsSorted);
+
         for (int i = myCardsSorted.length - 1; i >= 0; i--) {
             int comparison = myCardsSorted[i] - otherCardsSorted[i];
             if (comparison != 0) {
