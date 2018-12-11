@@ -37,6 +37,7 @@ public class PokerHandsApplication extends Application {
         primaryStage.setTitle("Poker Hands");
 
         Button submitButton = new Button();
+        submitButton.setId("compareButton");
         submitButton.setText("Compare");
         submitButton.setOnAction((event) -> {
             try {
@@ -60,6 +61,7 @@ public class PokerHandsApplication extends Application {
         player2CardsText.setText("3H4C5SKHKS");
         resultLabel = new Label();
         resultLabel.setWrapText(true);
+        resultLabel.setId("resultLabel");
 
         VBox root = new VBox();
         root.setSpacing(10);
