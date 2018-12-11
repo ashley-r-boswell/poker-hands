@@ -1,12 +1,11 @@
 package com.pokerhands.ui;
 
-import javafx.scene.Node;
+import javafx.scene.control.Button;
+import javafx.scene.input.MouseButton;
 import javafx.stage.Stage;
 import org.junit.Assert;
 import org.junit.Test;
 import org.testfx.framework.junit.ApplicationTest;
-
-import java.util.Set;
 
 public class PokerHandsApplicationTest extends ApplicationTest {
 
@@ -18,9 +17,10 @@ public class PokerHandsApplicationTest extends ApplicationTest {
     }
 
     @Test
-    public void runApplication() {
-        Set<Node> allNodes = this.fromAll().queryAll();
-        
-        Assert.assertEquals(1, allNodes.size());
+    public void clickCompareButton() {
+        Button button = lookup("Compare").queryButton();
+
+        Assert.assertNotNull(button);
+        clickOn(button, MouseButton.PRIMARY);
     }
 }
